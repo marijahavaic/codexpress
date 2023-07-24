@@ -21,7 +21,7 @@ class Snippet
     private ?string $content = null;
 
     #[ORM\Column]
-    private ?bool $isPublic = null;
+    private ?bool $isPublic = false;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $createdAt = null;
@@ -30,9 +30,10 @@ class Snippet
     private ?\DateTimeInterface $editedAt = null;
 
     #[ORM\Column]
-    private ?bool $isPublished = null;
+    private ?bool $isPublished = false;
 
     #[ORM\ManyToOne(inversedBy: 'snippets')]
+    #[ORM\JoinColumn(nullable:false)]
     private ?User $user = null;
 
     public function getId(): ?int
