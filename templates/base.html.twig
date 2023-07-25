@@ -3,17 +3,47 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}{% endblock %} • CodeXpress</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <link rel="icon" href={{ asset(('images/favicon.png'))}} />
         <link rel="stylesheet" href="https://unpkg.com/papercss@1.9.2/dist/paper.min.css">
+         <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
+         <link rel="stylesheet" href={{ asset('style.css') }}>
         {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
         {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
     <body>
-        <div class="container">
+    <div class="row">
+    <img src={{ asset('images/logo-codexpress.png')}} width="200" alt="Partage le code">
+    </div>
+
+     <div>
+     Example de phrase:
+        <span
+            {{ stimulus_controller('symfony/ux-typed', {
+                strings: [
+                    'coucou',
+                    'hello',
+                    'it works',
+                ],
+                loop: true,
+                showCursor: true,
+                cursorChar: '✨',
+            }) }}>
+            </span>
+            </div>
+        <div class="container animate__animated animate__fadeIn">
             {% block body %}{% endblock %}
         </div>
+        <footer>
+            &copy; {{ 'now'|date('Y')}} CodeXpress - <a href={{ path('app_logout')}}>Deconnexion</a>
+        </footer>
+        <script src={{ asset('main.js')}}></script>
     </body>
 </html>

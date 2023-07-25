@@ -12,14 +12,14 @@
   {% if snippet.editedAt %}
     - Modife le: {{ item.modifiedAt|date("d/m/Y")}}    
   {% endif %}
-  <p class="text-lead">
-    {{snippet.content|raw}}
-  </p>
+  <pre class="text-lead">
+   <code>{{snippet.content|raw}}</code> 
+  </pre>
   <p>Redige par {{snippet.user.username}} </p>
   <p>Statut: {% if snippet.isPublic == true %}
-    Public
+    <span class="green-pill">Public</span> 
     {% else %}
-    Prive
+    <span class="yellow-pill">Prive</span>
   {% endif %}
   </p>
 

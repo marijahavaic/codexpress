@@ -8,6 +8,10 @@
     {% endfor %}
 
     <h1>Créer un compte</h1>
+    <p>
+        Vous avez pas encore de compte? 
+        <a href={{ path('app_register')}}>Connectez-vous</a> 
+    </p>
 
     {{ form_errors(registrationForm) }}
 
