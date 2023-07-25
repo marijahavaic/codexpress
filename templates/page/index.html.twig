@@ -10,10 +10,10 @@
     <div class="card col-12 col" >
         <div class="card-body">
             <h4 class="card-title">{{ item.title }}</h4>
-            <h5 class="card-subtitle">Author</h5>
+            <h5 class="card-subtitle">{{ item.user.username }}</h5>
             <p class="card-text">{{ item.content|slice(0,80)}}...</p>
             <p class="card-text">{{ item.createdAt|date("d/m/Y")}}...</p>
-            <a class="card-link" href="#">Voir</a>
+            <a class="card-link" href={{ path('show_code', { id: item.id} )}}>Voir</a>
         </div>
     </div>
 
