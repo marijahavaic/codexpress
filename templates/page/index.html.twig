@@ -4,17 +4,23 @@
 
 {% block body %}
 
+<div class="container-lg">  
 {% for item in snippets %}
 
-    <div>
-        <h5>{{ item.title }}</h5>
-        <p>{{ item.content|slice(0,20)}}</p>
-        <a href="#">Voir</a>
+    <div class="card col-12 col" >
+        <div class="card-body">
+            <h4 class="card-title">{{ item.title }}</h4>
+            <h5 class="card-subtitle">Author</h5>
+            <p class="card-text">{{ item.content|slice(0,80)}}...</p>
+            <p class="card-text">{{ item.createdAt|date("d/m/Y")}}...</p>
+            <a class="card-link" href="#">Voir</a>
+        </div>
     </div>
 
     <hr>
     
 {% endfor %}
+</div>
 
     <div class="navigation">
         {{ knp_pagination_render(snippets) }}
