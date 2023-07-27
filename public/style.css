@@ -1,17 +1,45 @@
 .green-pill,
 .yellow-pill {
   border-radius: 50px;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  -ms-border-radius: 50px;
-  -o-border-radius: 50px;
-  color: #000;
+  color: #000000;
+  margin: 0 0.5rem;
 }
-
 .green-pill {
   background-color: #22dd22;
 }
-
 .yellow-pill {
   background-color: #f5ee28;
+}
+nav,
+.heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+nav a {
+  text-decoration: none;
+  border: inherit;
+}
+nav a:hover {
+  text-decoration: none;
+  border: inherit;
+}
+nav img {
+  border: 0;
+  margin: 1rem;
+}
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+input,
+.card {
+  margin: 0.5rem 0;
+}
+
+.card {
+  margin-bottom: 1rem;
 }
