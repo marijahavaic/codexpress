@@ -37,14 +37,18 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('CodeXpress');
+            ->setTitle("<img src='images/logo-codexpress.svg' width='300' alt='CodeXpress Partage de code'>");
     }
 
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::section('Gestion');
         yield MenuItem::linkToCrud('Snippets', 'fas fa-list', Snippet::class);
         yield MenuItem::linkToCrud('Users', 'fas fa-users', User::class);
+        yield MenuItem::section('Autre');
+        yield MenuItem::linkToRoute('Retour a l\'accueil', 'fas fa-arrow-left', 'app_page');
+        yield MenuItem::linkToRoute('Deconnecxion', 'fas fa-arrow-right-from-bracket', 'app_login');
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }
