@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ snippet.user.username }} - {{ snippet.id }}
+{% endblock %}
+
+{% block body %}
+	<article class="article">
+		<h1 class="article-title">
+			{{ snippet.title }}
+		</h1>
+		<p>
+            Rédigé par <kbd>{{ snippet.user.username }}</kbd>
+             | Statut : 
+            {% if snippet.isPublic == true %}
+                <span class="green-pill">Public</span>
+            {% else %}
+                <span class="yellow-pill">Privé</span>
+            {% endif %}
+        </p>
+		<p class="article-meta">
+            Créer le : {{ snippet.createdAt|date('d/m/Y') }}
+            <br>
+            {% if snippet.editedAt %}
+                 - Modifié le : {{ snippet.editedAt|date('d/m/Y') }} 
+            {% endif %}
+		</p>
+		<pre>
+            <code>{{ snippet.content }}</code>
+		</pre>
+
+        <div class="">
+        {# On affiche le formulaire décortiqué #}
+            {{ form_start(SnippetAI) }}
+                {# On affiche une ligne avec form_row et on précise laquelle
+                    puis on ajoute un attribut hidden avec la valeur
+                    de la variable snippet.content
+                #}
+                {{ form_row(SnippetAI.code, {
+                    'attr' : { 
+                        'hidden' : true,
+                        'value' : snippet.content,
+                    },
+                }) }}
+            {{ form_end(SnippetAI) }}
+        </div>
+
+        {% if Explication %}
+            <p>{{ Explication }}</p>
+        {% endif %}
+
+	</article>
+{% endblock %}
